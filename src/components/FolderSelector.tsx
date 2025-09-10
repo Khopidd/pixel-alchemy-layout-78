@@ -44,7 +44,7 @@ export const FolderSelector = ({
             <Button 
               variant="outline" 
               size="sm" 
-              className="px-4 rounded-18 border-border hover:border-primary hover:bg-primary/5"
+              className="px-4 rounded-18 border-border hover:border-primary hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
             >
               Browse
             </Button>
@@ -68,7 +68,7 @@ export const FolderSelector = ({
             <Button 
               variant="outline" 
               size="sm" 
-              className="px-4 rounded-18 border-border hover:border-primary hover:bg-primary/5"
+              className="px-4 rounded-18 border-border hover:border-primary hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
             >
               Browse
             </Button>

@@ -3,13 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import { Key, Eye, EyeOff, CheckCircle, Shield } from "lucide-react";
+import { Key, Eye, EyeOff, CheckCircle, Shield, Upload, Save } from "lucide-react";
 
 interface ApiKeyManagerProps {
   apiKeys: string[];
   hideKeys: boolean;
   onHideKeysChange: (hide: boolean) => void;
   onCheckApi: () => void;
+  onLoad: () => void;
+  onSave: () => void;
 }
 
 export const ApiKeyManager = ({
@@ -17,6 +19,8 @@ export const ApiKeyManager = ({
   hideKeys,
   onHideKeysChange,
   onCheckApi,
+  onLoad,
+  onSave,
 }: ApiKeyManagerProps) => {
   const [apiStatus, setApiStatus] = useState<'checking' | 'valid' | 'invalid' | null>(null);
 
@@ -68,26 +72,49 @@ export const ApiKeyManager = ({
             </div>
           ))}
         </div>
-        <div className="flex items-center gap-3 pt-2">
-          <Button
-            onClick={handleCheckApi}
-            disabled={apiStatus === 'checking'}
-            className="flex-1 bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold rounded-18"
-          >
-            {apiStatus === 'checking' ? (
-              "Validating..."
-            ) : (
-              <>
-                <CheckCircle className="w-4 h-4 mr-2" />
-                Check API
-              </>
+        <div className="space-y-3 pt-2">
+          <div className="flex items-center gap-3">
+            <Button
+              onClick={handleCheckApi}
+              disabled={apiStatus === 'checking'}
+              className="flex-1 bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold rounded-18"
+            >
+              {apiStatus === 'checking' ? (
+                "Validating..."
+              ) : (
+                <>
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  Check API
+                </>
+              )}
+            </Button>
+            {apiStatus === 'valid' && (
+              <Badge className="bg-primary/10 text-primary border-primary/20 rounded-18 font-medium">
+                ✓ Valid
+              </Badge>
             )}
-          </Button>
-          {apiStatus === 'valid' && (
-            <Badge className="bg-primary/10 text-primary border-primary/20 rounded-18 font-medium">
-              ✓ Valid
-            </Badge>
-          )}
+          </div>
+          
+          {/* Load and Save buttons */}
+          <div className="grid grid-cols-2 gap-3">
+            <Button 
+              onClick={onLoad} 
+              variant="outline" 
+              className="h-10 border-border/50 rounded-18 hover:border-primary hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              Load
+            </Button>
+            
+            <Button 
+              onClick={onSave} 
+              variant="outline" 
+              className="h-10 border-border/50 rounded-18 hover:border-primary hover:bg-primary/10 hover:text-primary font-medium transition-smooth"
+            >
+              <Save className="w-4 h-4 mr-2" />
+              Save
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

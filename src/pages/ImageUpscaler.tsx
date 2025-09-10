@@ -167,9 +167,9 @@ const ImageUpscaler = () => {
         </div>
 
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-12 grid-rows-[auto] gap-6">
-          {/* Folder Configuration - Top Left */}
-          <div className="col-span-12 lg:col-span-6 xl:col-span-4">
+        <div className="grid grid-cols-12 gap-6">
+          {/* Row 1: Folder Configuration - Full Width */}
+          <div className="col-span-12">
             <FolderSelector
               inputFolder={inputFolder}
               outputFolder={outputFolder}
@@ -178,39 +178,38 @@ const ImageUpscaler = () => {
             />
           </div>
 
-          {/* API Keys - Top Right */}
-          <div className="col-span-12 lg:col-span-6 xl:col-span-4">
+          {/* Row 2: API Keys and Processing Control */}
+          <div className="col-span-12 lg:col-span-6">
             <ApiKeyManager
               apiKeys={apiKeys}
               hideKeys={hideKeys}
               onHideKeysChange={setHideKeys}
               onCheckApi={handleCheckApi}
+              onLoad={handleLoad}
+              onSave={handleSave}
             />
           </div>
 
-          {/* Processing Controls - Top Far Right */}
-          <div className="col-span-12 xl:col-span-4">
+          <div className="col-span-12 lg:col-span-6">
             <ProcessingControls
               isProcessing={isProcessing}
               progress={progress}
               onStartProcessing={handleStartProcessing}
               onStopProcessing={handleStopProcessing}
-              onLoad={handleLoad}
-              onSave={handleSave}
               onDelete={handleDelete}
               onClearLog={handleClearLog}
             />
           </div>
 
-          {/* Processing Settings - Middle Left (Larger) */}
-          <div className="col-span-12 lg:col-span-8">
+          {/* Row 3: Processing Settings - Full Width */}
+          <div className="col-span-12">
             <ProcessingSettings
               settings={settings}
               onSettingsChange={handleSettingsChange}
             />
           </div>
 
-          {/* Logs - Bottom Full Width */}
+          {/* Row 4: Logs - Full Width */}
           <div className="col-span-12">
             <ProcessingLogs logs={logs} />
           </div>

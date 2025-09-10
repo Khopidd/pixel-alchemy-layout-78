@@ -5,8 +5,6 @@ import { Progress } from "@/components/ui/progress";
 import { 
   Play, 
   Square, 
-  Upload, 
-  Save, 
   Trash2, 
   RotateCcw, 
   Zap,
@@ -18,8 +16,6 @@ interface ProcessingControlsProps {
   progress: number;
   onStartProcessing: () => void;
   onStopProcessing: () => void;
-  onLoad: () => void;
-  onSave: () => void;
   onDelete: () => void;
   onClearLog: () => void;
 }
@@ -29,8 +25,6 @@ export const ProcessingControls = ({
   progress,
   onStartProcessing,
   onStopProcessing,
-  onLoad,
-  onSave,
   onDelete,
   onClearLog,
 }: ProcessingControlsProps) => {
@@ -79,27 +73,6 @@ export const ProcessingControls = ({
               Stop Processing
             </Button>
           )}
-        </div>
-        
-        {/* Control Buttons Grid */}
-        <div className="grid grid-cols-2 gap-3">
-          <Button 
-            onClick={onLoad} 
-            variant="outline" 
-            className="h-11 border-border/50 rounded-18 hover:border-primary hover:bg-primary/5 font-medium"
-          >
-            <Upload className="w-4 h-4 mr-2" />
-            Load
-          </Button>
-          
-          <Button 
-            onClick={onSave} 
-            variant="outline" 
-            className="h-11 border-border/50 rounded-18 hover:border-primary hover:bg-primary/5 font-medium"
-          >
-            <Save className="w-4 h-4 mr-2" />
-            Save
-          </Button>
         </div>
         
         {/* Utility Buttons */}
