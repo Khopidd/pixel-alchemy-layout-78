@@ -37,8 +37,8 @@ export const ProcessingLogs = ({ logs }: ProcessingLogsProps) => {
   };
 
   return (
-    <Card className="bg-gradient-card border-0 rounded-18 shadow-bento hover:shadow-hover transition-smooth">
-      <CardHeader className="pb-4">
+    <Card className="h-full bg-gradient-card border-0 rounded-18 shadow-bento hover:shadow-hover transition-smooth flex flex-col">
+      <CardHeader className="pb-4 flex-shrink-0">
         <div className="flex items-center justify-between">
           <CardTitle className="text-xl font-semibold text-foreground flex items-center gap-3">
             <div className="p-2 bg-gradient-primary rounded-18">
@@ -53,8 +53,8 @@ export const ProcessingLogs = ({ logs }: ProcessingLogsProps) => {
           )}
         </div>
       </CardHeader>
-      <CardContent>
-        <ScrollArea className="h-64 w-full rounded-18 border border-border/30 bg-background/20">
+      <CardContent className="flex-1 min-h-0">
+        <ScrollArea className="h-full w-full rounded-18 border border-border/30 bg-background/20">
           <div className="p-4 space-y-3">
             {logs.length === 0 ? (
               <div className="text-center text-muted-foreground py-12">
