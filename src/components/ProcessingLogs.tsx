@@ -37,52 +37,52 @@ export const ProcessingLogs = ({ logs }: ProcessingLogsProps) => {
   };
 
   return (
-    <Card className="h-full bg-gradient-card border-0 rounded-18 shadow-bento hover:shadow-hover transition-smooth flex flex-col">
-      <CardHeader className="pb-4 flex-shrink-0">
+    <Card className="h-full bg-gradient-card border-0 rounded-lg shadow-bento hover:shadow-hover transition-smooth flex flex-col">
+      <CardHeader className="pb-2 flex-shrink-0">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-xl font-semibold text-foreground flex items-center gap-3">
-            <div className="p-2 bg-gradient-primary rounded-18">
-              <FileText className="w-5 h-5 text-primary-foreground" />
+          <CardTitle className="text-lg font-semibold text-foreground flex items-center gap-2">
+            <div className="p-1.5 bg-gradient-primary rounded-lg">
+              <FileText className="w-4 h-4 text-primary-foreground" />
             </div>
             Processing Logs
           </CardTitle>
           {logs.length > 0 && (
-            <Badge className="bg-primary/10 text-primary border-primary/20 rounded-18 font-semibold">
+            <Badge className="bg-primary/10 text-primary border-primary/20 rounded-lg font-semibold text-xs">
               {logs.length} entries
             </Badge>
           )}
         </div>
       </CardHeader>
       <CardContent className="flex-1 min-h-0">
-        <ScrollArea className="h-full w-full rounded-18 border border-border/30 bg-background/20">
-          <div className="p-4 space-y-3">
+        <ScrollArea className="h-full w-full rounded-lg border border-border/30 bg-background/20">
+          <div className="p-2 space-y-2">
             {logs.length === 0 ? (
-              <div className="text-center text-muted-foreground py-12">
-                <div className="mx-auto w-16 h-16 bg-muted/30 rounded-18 flex items-center justify-center mb-4">
-                  <FileText className="w-8 h-8 opacity-50" />
+              <div className="text-center text-muted-foreground py-8">
+                <div className="mx-auto w-12 h-12 bg-muted/30 rounded-lg flex items-center justify-center mb-3">
+                  <FileText className="w-6 h-6 opacity-50" />
                 </div>
-                <p className="font-medium mb-1">No logs available</p>
-                <p className="text-sm">Start processing to see activity here</p>
+                <p className="font-medium mb-1 text-sm">No logs available</p>
+                <p className="text-xs">Start processing to see activity here</p>
               </div>
             ) : (
               logs.map((log, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 bg-card/30 rounded-18 hover:bg-card/50 transition-smooth border border-border/20"
+                  className="flex items-start gap-3 p-2 bg-card/30 rounded-lg hover:bg-card/50 transition-smooth border border-border/20"
                 >
                   <div className="flex-shrink-0 mt-0.5">
                     {getLogIcon(log.type)}
                   </div>
-                  <div className="flex-1 min-w-0 space-y-2">
-                    <div className="flex items-center gap-3">
+                  <div className="flex-1 min-w-0 space-y-1">
+                    <div className="flex items-center gap-2">
                       <Badge 
-                        className={`text-xs rounded-18 font-medium ${getLogStyles(log.type)}`}
+                        className={`text-xs rounded-lg font-medium ${getLogStyles(log.type)}`}
                       >
-                        <Clock className="w-3 h-3 mr-1" />
+                        <Clock className="w-2.5 h-2.5 mr-1" />
                         {log.timestamp}
                       </Badge>
                     </div>
-                    <p className="text-sm text-foreground/90 font-medium leading-relaxed">
+                    <p className="text-xs text-foreground/90 font-medium leading-relaxed">
                       {log.message}
                     </p>
                   </div>

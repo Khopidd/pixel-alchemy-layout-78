@@ -140,12 +140,12 @@ const ImageUpscaler = () => {
   };
 
   return (
-    <div className="h-screen bg-gradient-secondary font-outfit p-4">
+    <div className="h-screen bg-gradient-secondary font-outfit p-2">
       <div className="h-full max-w-7xl mx-auto flex flex-col">
-        {/* Bento Grid Layout - Using flex-1 to fill remaining space */}
-        <div className="flex-1 grid grid-cols-12 grid-rows-4 gap-4 min-h-0">
-          {/* Row 1: Folder Configuration - Full Width (20% height) */}
-          <div className="col-span-12 row-span-1">
+        {/* Bento Grid Layout - Compact spacing */}
+        <div className="flex-1 grid grid-cols-12 gap-2 min-h-0" style={{gridTemplateRows: 'auto auto 1fr 1fr'}}>
+          {/* Row 1: Folder Configuration - Full Width (Compact) */}
+          <div className="col-span-12">
             <FolderSelector
               inputFolder={inputFolder}
               outputFolder={outputFolder}
@@ -154,8 +154,8 @@ const ImageUpscaler = () => {
             />
           </div>
 
-          {/* Row 2: API Keys and Processing Control (25% height) */}
-          <div className="col-span-12 lg:col-span-6 row-span-1">
+          {/* Row 2: API Keys and Processing Control (Compact) */}
+          <div className="col-span-12 lg:col-span-6">
             <ApiKeyManager
               apiKeys={apiKeys}
               hideKeys={hideKeys}
@@ -166,7 +166,7 @@ const ImageUpscaler = () => {
             />
           </div>
 
-          <div className="col-span-12 lg:col-span-6 row-span-1">
+          <div className="col-span-12 lg:col-span-6">
             <ProcessingControls
               isProcessing={isProcessing}
               progress={progress}
@@ -177,25 +177,25 @@ const ImageUpscaler = () => {
             />
           </div>
 
-          {/* Row 3: Processing Settings - Full Width (25% height) */}
-          <div className="col-span-12 row-span-1">
+          {/* Row 3: Processing Settings - Full Width (Flexible) */}
+          <div className="col-span-12">
             <ProcessingSettings
               settings={settings}
               onSettingsChange={handleSettingsChange}
             />
           </div>
 
-          {/* Row 4: Logs - Full Width (30% height) */}
-          <div className="col-span-12 row-span-1">
+          {/* Row 4: Logs - Full Width (Flexible) */}
+          <div className="col-span-12">
             <ProcessingLogs logs={logs} />
           </div>
         </div>
         
-        {/* Footer - Fixed height */}
-        <div className="text-center py-2 flex-shrink-0">
-          <div className="inline-flex items-center gap-2 text-xs text-muted-foreground bg-card/50 px-3 py-1 rounded-18 shadow-soft">
+        {/* Footer - Minimal */}
+        <div className="text-center py-1 flex-shrink-0">
+          <div className="inline-flex items-center gap-1 text-xs text-muted-foreground bg-card/50 px-2 py-1 rounded-lg">
             <Zap className="w-3 h-3 text-primary" />
-            <span>Powered by Advanced AI Technology • Made with ❤️</span>
+            <span className="text-xs">Powered by AI</span>
           </div>
         </div>
       </div>
